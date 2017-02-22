@@ -1,0 +1,33 @@
+{
+  "name": "bedrock-web-push",
+  "version": "1.0.0",
+  "description": "Bedrock Web Push Application Server",
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-web-push.git"
+  },
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "http://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-web-push/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-web-push",
+  "dependencies": {
+    "async": "^2.0.0",
+    "uuid": "^3.0.1"
+  },
+  "peerDependencies": {
+    "bedrock": "^1.4.0",
+    "bedrock-server": "^2.2.0",
+    "bedrock-express": "^2.0.6",
+    "bedrock-mongodb": "^3.2.0",
+    "bedrock-passport": "^3.1.9",
+    "bedrock-permission": "^2.4.0",
+    "bedrock-rest": "^2.0.2",
+    "bedrock-validation": "^2.2.0"
+  }
+}
