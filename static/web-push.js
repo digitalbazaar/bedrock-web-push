@@ -25,7 +25,7 @@ var api = global.bedrock.webPush = {};
  *          serviceName the name of the service to subscribe for.
  *          label a label for the subscription.
  *          owner the owner (Identity) of the subscription.
- * @return a Promise that resolves to the subscription.
+ * @return a Promise that resolves to the pushToken on success.
  */
 api.subscribe = function(registration, options) {
   if(!registration) {
@@ -158,14 +158,14 @@ function storeSubscription(baseUrl, subscription) {
     if(!res.ok) {
       if(res.status === 409) {
         // duplicate subscription; not an error
-        return true;
+        return subscription.pushToken;
       }
       // TODO: implement more recoverable error handling
       return res.json().then(function(error) {
         throw new Error(error.message);
       });
     }
-    return true;
+    return subscription.pushToken;
   });
 }
 
