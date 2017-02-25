@@ -109,7 +109,7 @@ api.unsubscribe = function(registration, options) {
 };
 
 function getVapidKey(baseUrl, serviceName) {
-  var url = baseUrl + '/web-push/vapid-keys/' + encodeURIComponent(serviceName);
+  var url = baseUrl + '/vapid-keys/' + encodeURIComponent(serviceName);
   return fetch(url).then(function(res) {
     if(!res.ok) {
       return res.json().then(function(error) {
@@ -150,7 +150,7 @@ function getValidSubscription(pm, vapidKey, options) {
 
 function storeSubscription(baseUrl, subscription) {
   // try to add subscription
-  return fetch(baseUrl + '/web-push/subscriptions', {
+  return fetch(baseUrl + '/subscriptions', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(subscription)
