@@ -12,7 +12,7 @@ if(!global.bedrock) {
   global.bedrock = {};
 }
 
-var api = global.bedrock['web-push'] = {};
+var api = global.bedrock.webPush = {};
 
 /**
  * Subscribe a service worker registration for push messages.
