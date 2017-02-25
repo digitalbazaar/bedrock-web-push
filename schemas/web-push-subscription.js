@@ -10,9 +10,10 @@ const schema = {
   properties: {
     label: schemas.label({required: false}),
     owner: schemas.identifier({required: true}),
-    //device: ?, // device UUID of some sort? or client ID? just use `auth`?
-    // how can the user know which subscription it is... through the label but they don't set that?
-    //applicationServerKey: ? // publicKeyId/hash for service? ... match up with the service being used?
+    // ID of VAPID key
+    vapidKey: schemas.identifier({required: true}),
+    // optional device identifier
+    device: schemas.identifier({required: false}),
     pushToken: {
       type: 'object',
       properties: {
