@@ -3,16 +3,16 @@
  *
  * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
  */
-/* global fetch */
+/* global bedrock, fetch */
+if(typeof bedrock === 'undefined') {
+  bedrock = {};
+}
+
 (function() {
 
 'use strict';
 
-if(!global.bedrock) {
-  global.bedrock = {};
-}
-
-var api = global.bedrock.webPush = {};
+var api = bedrock.webPush = {};
 
 /**
  * Subscribe a service worker registration for push messages.
@@ -175,7 +175,7 @@ function urlBase64ToUint8Array(base64String) {
     .replace(/\-/g, '+')
     .replace(/_/g, '/');
 
-  const rawData = global.atob(base64);
+  const rawData = self.atob(base64);
   const outputArray = new Uint8Array(rawData.length);
 
   for(let i = 0; i < rawData.length; ++i) {
