@@ -5,4 +5,4 @@ const subscription = require('./web-push-subscription');
 
 const postSubscription = subscription();
 
-module.exports.postInbox = () => postSubscription;
+module.exports.postSubscription = () => postSubscription;
