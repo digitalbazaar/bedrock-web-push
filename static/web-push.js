@@ -88,6 +88,7 @@ api.unsubscribe = function(registration, options) {
     var url = options.baseUrl + '/subscriptions?endpoint=' +
       encodeURIComponent(pushToken.endpoint);
     return fetch(url, {
+      credentials: 'include',
       headers: {Accept: 'application/ld+json; application/json'}
     }).then(function(res) {
       if(!res.ok) {
@@ -102,6 +103,7 @@ api.unsubscribe = function(registration, options) {
       }
       return fetch(subscription.id, {
         method: 'DELETE',
+        credentials: 'include',
         headers: {Accept: 'application/ld+json; application/json'}
       });
     }).catch(function(err) {
@@ -116,6 +118,7 @@ api.unsubscribe = function(registration, options) {
 function getVapidKey(baseUrl, serviceName) {
   var url = baseUrl + '/vapid-keys/' + encodeURIComponent(serviceName);
   return fetch(url, {
+    credentials: 'include',
     headers: {Accept: 'application/ld+json; application/json'}
   }).then(function(res) {
     if(!res.ok) {
@@ -159,6 +162,7 @@ function storeSubscription(baseUrl, subscription) {
   // try to add subscription
   return fetch(baseUrl + '/subscriptions', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       Accept: 'application/ld+json; application/json',
       'Content-Type': 'application/json'
