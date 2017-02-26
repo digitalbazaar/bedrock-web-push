@@ -87,7 +87,9 @@ api.unsubscribe = function(registration, options) {
   return pm.getSubscription().then(function(pushToken) {
     var url = options.baseUrl + '/subscriptions?endpoint=' +
       encodeURIComponent(pushToken.endpoint);
-    return fetch(url).then(function(res) {
+    return fetch(url, {
+      headers: {Accept: 'application/ld+json; application/json'}
+    }).then(function(res) {
       if(!res.ok) {
         // assume subscription does not exist (will be removed later if
         // it did and there was an error)
@@ -98,7 +100,10 @@ api.unsubscribe = function(registration, options) {
       if(!subscription) {
         return;
       }
-      return fetch(subscription.id, {method: 'DELETE'});
+      return fetch(subscription.id, {
+        method: 'DELETE',
+        headers: {Accept: 'application/ld+json; application/json'}
+      });
     }).catch(function(err) {
       // ignore error with deleting subscription on server
     }).then(function() {
@@ -110,7 +115,9 @@ api.unsubscribe = function(registration, options) {
 
 function getVapidKey(baseUrl, serviceName) {
   var url = baseUrl + '/vapid-keys/' + encodeURIComponent(serviceName);
-  return fetch(url).then(function(res) {
+  return fetch(url, {
+    headers: {Accept: 'application/ld+json; application/json'}
+  }).then(function(res) {
     if(!res.ok) {
       return res.json().then(function(error) {
         throw new Error(error.message);
@@ -152,7 +159,10 @@ function storeSubscription(baseUrl, subscription) {
   // try to add subscription
   return fetch(baseUrl + '/subscriptions', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      Accept: 'application/ld+json; application/json',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(subscription)
   }).then(function(res) {
     if(!res.ok) {
