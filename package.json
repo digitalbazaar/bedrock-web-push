@@ -1,6 +1,6 @@
 {
   "name": "bedrock-web-push",
-  "version": "2.0.1",
+  "version": "2.0.2-0",
   "description": "Bedrock Web Push Application Server",
   "main": "./lib",
   "repository": {
