@@ -20,7 +20,8 @@
     "async": "^2.0.0",
     "request": "^2.79.0",
     "uuid": "^3.0.1",
-    "web-push": "^3.2.2"
+    "web-push": "^3.2.2",
+    "snyk": "^1.192.3"
   },
   "peerDependencies": {
     "bedrock": "^1.4.0",
@@ -31,5 +32,10 @@
     "bedrock-permission": "^2.4.0",
     "bedrock-rest": "^2.0.2",
     "bedrock-validation": "^2.2.0"
-  }
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
